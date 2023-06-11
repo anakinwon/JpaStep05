@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: test
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/querydsl
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    # ???? : jdbc:h2:~/querydsl
+    # ???   : jdbc:h2:tcp://localhost/~/querydsl
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 1000  # ?? ?? ??
+        use_sql_comment: true
+
+  data:
+    web:
+      pageable:
+        default-page-size: 10           # ??? ??? ?????
+        max-page-size: 2000             # ?? ??? ?? ??
+        one-indexed-parameters: true    # ??? index ??? 0? ?? 1?? ???? ?? (??? ??)
+
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace             # ?? ???
